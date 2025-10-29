@@ -16,28 +16,34 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      padding-top: 100px; /* ensures content stays below fixed header */
     }
 
     /* ====== HEADER ====== */
     header {
-      position: fixed; /* stays visible at top */
-      top: 0;
-      left: 0;
+      position: relative; /* moves with page scroll */
       width: 100%;
       text-align: center;
       padding: 20px 0;
       color: white;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.25);
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      z-index: 1000; /* stays above everything */
+      z-index: 10;
     }
 
     header h1 {
       margin: 0;
       font-size: 1.8rem;
       letter-spacing: 1px;
+    }
+
+    /* ====== MAIN CONTENT ====== */
+    main {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 50px 0;
     }
 
     /* ====== CHATBOT CONTAINER ====== */
@@ -53,7 +59,7 @@
       align-items: center;
       justify-content: center;
       padding: 30px;
-      margin-top: 30px;
+      margin: 40px 0;
     }
 
     /* ====== LOGO ====== */
@@ -65,12 +71,6 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.3);
     }
 
-    p {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 20px;
-    }
-
     iframe {
       border-radius: 12px;
       border: none;
@@ -80,21 +80,17 @@
     }
 
     footer {
-      position: fixed;
-      bottom: 10px;
-      left: 0;
       width: 100%;
       text-align: center;
       color: white;
       font-size: 0.85rem;
       opacity: 0.85;
-      padding: 10px 0;
+      padding: 15px 0;
+      background-color: rgba(0, 0, 0, 0.25);
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
     }
 
     @media (max-width: 900px) {
-      body {
-        padding-top: 90px;
-      }
       .chat-container {
         width: 95%;
         height: auto;
@@ -115,18 +111,24 @@
     <h1>IT Compliance Portal</h1>
   </header>
 
-  <div class="chat-container">
-    <img src="KEY_BIG.png" alt="Company Logo" class="logo" />
+  <main>
+    <div class="chat-container">
+      <img src="KEY_BIG.png" alt="Company Logo" class="logo" />
 
-    <!-- Your Chatbot Embed -->
-    <iframe 
-      style="background: white; border-radius: 8px; border: none; box-shadow: 5px 5px 24px 0px #0000001F;" 
-      allow="microphone" 
-      src="https://embed.writer.com/chat/EWKpewBTbqWUT5DtRN0cDo8LmSrE-JwAeze-Z1Sdf5A" 
-      width="800" 
-      height="600">
-    </iframe>
-  </div>
+      <!-- Chatbot Embed -->
+      <iframe 
+        style="background: white; border-radius: 8px; border: none; box-shadow: 5px 5px 24px 0px #0000001F;" 
+        allow="microphone" 
+        src="https://embed.writer.com/chat/EWKpewBTbqWUT5DtRN0cDo8LmSrE-JwAeze-Z1Sdf5A" 
+        width="800" 
+        height="600">
+      </iframe>
+    </div>
+
+    <div class="chat-container">
+      <p>This is extra filler content to show how the header scrolls with the page.</p>
+    </div>
+  </main>
 
   <footer>
     © 2025 Hack-A-Thon: Banker Experience Team Rules 
