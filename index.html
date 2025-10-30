@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>IT Compliance Portal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compliance and Standards Chatbot</title>
   <style>
+    /* ====== GLOBAL STYLES ====== */
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
@@ -17,70 +18,65 @@
       align-items: center;
     }
 
+    /* ====== HEADER ====== */
     header {
+      position: relative; /* moves naturally with scroll */
       width: 100%;
       text-align: center;
-      padding: 18px 0;
+      padding: 20px 0;
       color: white;
-      background-color: rgba(0,0,0,0.25);
+      background-color: rgba(0, 0, 0, 0.25);
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 100;
+      z-index: 10;
     }
 
-    header h1 { margin: 0; font-size: 1.6rem; letter-spacing: 1px; }
-
-    .toggle-buttons {
-      margin-top: 8px;
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
     }
 
-    .toggle-buttons button {
-      background: rgba(255,255,255,0.18);
-      border: none;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 8px;
-      margin: 0 8px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .toggle-buttons button:hover { background: rgba(255,255,255,0.35); }
-    .active-btn { background: rgba(255,255,255,0.75); color: #111; }
-
+    /* ====== MAIN CONTENT ====== */
     main {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 120px;
-      padding-bottom: 60px;
+      justify-content: flex-start;
+      padding: 50px 0;
     }
 
+    /* ====== CHATBOT CONTAINER ====== */
     .chat-container {
       background-color: white;
-      border-radius: 14px;
-      box-shadow: 0 6px 30px rgba(0,0,0,0.28);
-      width: 92%;
-      max-width: 920px;
-      min-height: 680px;
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 850px;
+      height: 700px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 26px;
-      margin: 18px 0;
+      justify-content: center;
+      padding: 30px;
+      margin: 40px 0;
     }
 
-    .logo { width: 220px; height: auto; margin-bottom: 18px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.2); }
+    /* ====== LOGO ====== */
+    .logo {
+      width: 220px;
+      height: auto;
+      margin-bottom: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
 
-    .chat-frame {
+    iframe {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
       width: 100%;
       height: 600px;
-      border-radius: 10px;
-      border: none;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
     }
 
     footer {
@@ -88,87 +84,50 @@
       text-align: center;
       color: white;
       font-size: 0.85rem;
-      opacity: 0.9;
-      padding: 12px 0;
-      background-color: rgba(0,0,0,0.2);
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
-      position: fixed;
-      bottom: 0;
-      left: 0;
+      opacity: 0.85;
+      padding: 15px 0;
+      background-color: rgba(0, 0, 0, 0.25);
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
     }
 
     @media (max-width: 900px) {
-      .chat-frame { height: 480px; }
-      .logo { width: 160px; }
-      main { padding-top: 110px; }
+      .chat-container {
+        width: 95%;
+        height: auto;
+        padding: 20px;
+      }
+      iframe {
+        width: 100%;
+        height: 500px;
+      }
+      .logo {
+        width: 160px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>IT Compliance Portal</h1>
-    <div class="toggle-buttons">
-      <button id="btn1" class="active-btn" onclick="showChat(1)">Compliance Chatbot</button>
-      <button id="btn2" onclick="showChat(2)">Standards Chatbot</button>
-    </div>
   </header>
 
   <main>
     <div class="chat-container">
       <img src="KEY_BIG.png" alt="Company Logo" class="logo" />
 
-      <!-- Chat 1: iframe embed -->
-      <div id="chat1" style="width:100%;">
-        <iframe
-          class="chat-frame"
-          allow="microphone"
-          src="https://embed.writer.com/chat/EWKpewBTbqWUT5DtRN0cDo8LmSrE-JwAeze-Z1Sdf5A"
-        ></iframe>
-      </div>
-
-      <!-- Chat 2: script-based embed -->
-      <div id="chat2" style="display:none; width:100%;">
-        <div id="writer-chat"></div>
-      </div>
+      <!-- Chatbot Embed -->
+      <iframe 
+        style="background: white; border-radius: 8px; border: none; box-shadow: 5px 5px 24px 0px #0000001F;" 
+        allow="microphone" 
+        src="https://embed.writer.com/chat/EWKpewBTbqWUT5DtRN0cDo8LmSrE-JwAeze-Z1Sdf5A" 
+        width="800" 
+        height="600">
+      </iframe>
     </div>
   </main>
 
-  <footer>© 2025 Hack-A-Thon: Banker Experience Team Rules</footer>
-
-  <script>
-    function showChat(num) {
-      const c1 = document.getElementById('chat1');
-      const c2 = document.getElementById('chat2');
-      const b1 = document.getElementById('btn1');
-      const b2 = document.getElementById('btn2');
-
-      if (num === 1) {
-        c1.style.display = 'block';
-        c2.style.display = 'none';
-        b1.classList.add('active-btn');
-        b2.classList.remove('active-btn');
-      } else {
-        c1.style.display = 'none';
-        c2.style.display = 'block';
-        b2.classList.add('active-btn');
-        b1.classList.remove('active-btn');
-
-        // Inject Writer embed script dynamically if not already loaded
-        if (!window.writerEmbedConfig) {
-          window.writerEmbedConfig = {
-            token: 'EWKpewBTbqWUT5DtRN0cDo8LmSrE-JwAeze-Z1Sdf5A',
-            baseUrl: 'https://embed.writer.com/chat/'
-          };
-
-          const s = document.createElement('script');
-          s.src = 'https://embed.writer.com/assets/chat-embed.min.js';
-          s.defer = true;
-          document.body.appendChild(s);
-        }
-      }
-    }
-
-    showChat(1); // Default to first chat
-  </script>
+  <footer>
+    © 2025 Hack-A-Thon: Banker Experience Team Rules 
+  </footer>
 </body>
 </html>
