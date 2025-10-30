@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Compliance and Standards Chatbot</title>
   <style>
-    /* ====== GLOBAL STYLES ====== */
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
@@ -18,9 +17,8 @@
       align-items: center;
     }
 
-    /* ====== HEADER ====== */
     header {
-      position: relative; /* moves naturally with scroll */
+      position: relative;
       width: 100%;
       text-align: center;
       padding: 20px 0;
@@ -36,7 +34,6 @@
       letter-spacing: 1px;
     }
 
-    /* ====== MAIN CONTENT ====== */
     main {
       width: 100%;
       display: flex;
@@ -46,7 +43,6 @@
       padding: 50px 0;
     }
 
-    /* ====== CHATBOT CONTAINER ====== */
     .chat-container {
       background-color: white;
       border-radius: 16px;
@@ -62,7 +58,6 @@
       margin: 40px 0;
     }
 
-    /* ====== LOGO ====== */
     .logo {
       width: 220px;
       height: auto;
@@ -89,21 +84,6 @@
       background-color: rgba(0, 0, 0, 0.25);
       box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
     }
-
-    @media (max-width: 900px) {
-      .chat-container {
-        width: 95%;
-        height: auto;
-        padding: 20px;
-      }
-      iframe {
-        width: 100%;
-        height: 500px;
-      }
-      .logo {
-        width: 160px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -114,13 +94,11 @@
   <main>
     <div class="chat-container">
       <img src="KEY_BIG.png" alt="Company Logo" class="logo" />
-
-      <!-- Chatbot Embed -->
-      <iframe 
-        style="background: white; border-radius: 8px; border: none; box-shadow: 5px 5px 24px 0px #0000001F;" 
-        allow="microphone" 
-        src="https://embed.writer.com/chat/EWKpewBTbqWUT5DtRN0cDo8LmSrE-JwAeze-Z1Sdf5A" 
-        width="800" 
+      <iframe
+        style="background: white; border-radius: 8px; border: none; box-shadow: 5px 5px 24px 0px #0000001F;"
+        allow="microphone"
+        src="https://embed.writer.com/chat/EWKpewBTbqWUT5DtRN0cDo8LmSrE-JwAeze-Z1Sdf5A"
+        width="800"
         height="600">
       </iframe>
     </div>
