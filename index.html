@@ -31,7 +31,11 @@
     }
 
     header h1 { margin: 0; font-size: 1.6rem; letter-spacing: 1px; }
-    .toggle-buttons { margin-top: 8px; }
+
+    .toggle-buttons {
+      margin-top: 8px;
+    }
+
     .toggle-buttons button {
       background: rgba(255,255,255,0.18);
       border: none;
@@ -42,6 +46,7 @@
       cursor: pointer;
       transition: background 0.2s;
     }
+
     .toggle-buttons button:hover { background: rgba(255,255,255,0.35); }
     .active-btn { background: rgba(255,255,255,0.75); color: #111; }
 
@@ -50,7 +55,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 120px; /* leave room for fixed header */
+      padding-top: 120px;
       padding-bottom: 60px;
     }
 
@@ -121,13 +126,9 @@
         ></iframe>
       </div>
 
-      <!-- Chat 2: replaced script embed with iframe for reliability -->
+      <!-- Chat 2: script-based embed -->
       <div id="chat2" style="display:none; width:100%;">
-        <iframe
-          class="chat-frame"
-          allow="microphone"
-          src="https://embed.writer.com/chat/EWKpewBTbqWUT5DtRN0cDo8LmSrE-JwAeze-Z1Sdf5A"
-        ></iframe>
+        <div id="writer-chat"></div>
       </div>
     </div>
   </main>
@@ -135,7 +136,6 @@
   <footer>© 2025 Hack-A-Thon: Banker Experience Team Rules</footer>
 
   <script>
-    // show/hide toggle
     function showChat(num) {
       const c1 = document.getElementById('chat1');
       const c2 = document.getElementById('chat2');
@@ -152,11 +152,23 @@
         c2.style.display = 'block';
         b2.classList.add('active-btn');
         b1.classList.remove('active-btn');
+
+        // Inject Writer embed script dynamically if not already loaded
+        if (!window.writerEmbedConfig) {
+          window.writerEmbedConfig = {
+            token: 'EWKpewBTbqWUT5DtRN0cDo8LmSrE-JwAeze-Z1Sdf5A',
+            baseUrl: 'https://embed.writer.com/chat/'
+          };
+
+          const s = document.createElement('script');
+          s.src = 'https://embed.writer.com/assets/chat-embed.min.js';
+          s.defer = true;
+          document.body.appendChild(s);
+        }
       }
     }
 
-    // keep Chat 1 visible on load
-    showChat(1);
+    showChat(1); // Default to first chat
   </script>
 </body>
 </html>
